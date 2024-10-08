@@ -1,0 +1,30 @@
+package main
+import (
+    "fmt"
+    "strings"
+)
+//funcion para pasar todo a minusculas y sin espacios
+func esPalindromo(frase string) bool {
+    frase = strings.ToLower(frase)
+    frase = strings.ReplaceAll(frase, " ", "")
+
+    //se compara la frase al reves
+    for i := 0; i < len(frase)/2; i++ {
+        if frase[i] != frase[len(frase)-1-i] {
+            return false
+        }
+    }
+    return true
+}
+
+func main() {
+    fmt.Println("Ingresa una palabra o frase:")
+    var input string
+    fmt.Scanln(&input)
+
+    if esPalindromo(input) {
+        fmt.Println("Es un palíndromo.")
+    } else {
+        fmt.Println("No es un palíndromo.")
+    }
+}
